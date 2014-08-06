@@ -49,7 +49,7 @@ tmp.file({ postfix: ".html" }, function (err, path) {
     exec("phantomjs " + runRSFile + " " + path, function (err, stdout, stderr) {
         if (err) throw "Error running PhantomJS script: " + (stderr || err || "unknown error");
         var data = JSON.parse(stdout)
-        ,   domSrc = rfs("dom-core.html")
+        ,   domSrc = rfs("url.html")
                         .replace(/<meta charset[^]*?<div/im, "<head>\n" + data.head + "\n</head>\n<div")
                         .replace(/<div class="head">[^]*?<\/div>/im, "<div class='head'>" + data.divHead + "</div>")
                         .replace(/<script[^]*?<\/script>/mig, "")
