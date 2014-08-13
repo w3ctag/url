@@ -23,7 +23,7 @@ var fs = require("fs")
                             { name: "Anne van Kesteren", url: "http://annevankesteren.nl/",
                               company: "Mozilla", companyURL: "http://www.mozilla.org/",
                               email: "annevk@annevk.nl", note: "Upstream WHATWG version" }
-                        ,   { name: "Dan Appelquist",
+                        ,   { name: "Daniel Appelquist",
                               company: "Telefónica", companyURL: "http://telefonica.com/",
                               email: "daniel.appelquist@telefonica.com" }
                         ]
