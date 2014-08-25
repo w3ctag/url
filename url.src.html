@@ -511,7 +511,7 @@ these steps:
   these substeps:
 
   <ol>
-   <li><p>Let <var title>value</var> be 0.
+   <li><p>Let <var title>value</var> be null.
 
    <li><p>If <span>c</span> is not an <span title="ASCII digits">ASCII digit</span>,
    <span>parse error</span>, return failure. <!-- prevent the empty string -->
@@ -521,12 +521,18 @@ these steps:
     <span title="ASCII digits">ASCII digit</span>, run these subsubsteps:
 
     <ol>
-     <li><p>Set <var title>value</var> to
-     <var title>value</var> &times; 10 + <span>c</span> interpreted as decimal number.
+     <li><p>Let <var title>number</var> be <span>c</span> interpreted as decimal number.
+
+     <li>
+      <p>If <var title>value</var> is null, set <var title>value</var> to <var title>number</var>.
+
+      <p>Otherwise, if <var title>value</var> is 0, <span>parse error</span>, return failure.
+
+      <p>Otherwise, set <var title>value</var> to <var title>value</var> &times; 10 + <var title>number</var>.
 
      <li><p>Increase <var title>pointer</var> by one.
 
-     <li><p>If <var title>value</var> is 0 or greater than 255, <span>parse error</span>,
+     <li><p>If <var title>value</var> is greater than 255, <span>parse error</span>,
      return failure.
     </ol>
 
@@ -537,7 +543,7 @@ these steps:
    <li><p>Set <var title>piece</var> to
    <var title>piece</var> &times; 0x100 + <var title>value</var>.
 
-   <li><p>If <var title>dots seen</var> is 0 or 2, increase
+   <li><p>If <var title>dots seen</var> is 1 or 3, increase
    <var title>piece pointer</var> by one.
 
    <li><p>Increase <var title>pointer</var> by one.
@@ -559,10 +565,11 @@ these steps:
 
    <li><p>Set <var title>piece pointer</var> to seven.
 
-   <li><p>While <var title>piece pointer</var> is not zero, swap <var title>piece</var>
-   with the <span title=concept-ipv6-piece>piece</span> at pointer
+   <li><p>While <var title>piece pointer</var> is not zero and <var title>swaps</var> is
+   greater than zero, swap <var title>piece</var> with the
+   <span title=concept-ipv6-piece>piece</span> at pointer
    <var title>compress pointer</var> + <var title>swaps</var> &minus; 1, and then
-   decrease <var title>piece pointer</var> and <var title>swaps</var> by one.
+   decrease both <var title>piece pointer</var> and <var title>swaps</var> by one.
   </ol>
 
  <li><p>Otherwise, if <var title>compress pointer</var> is null and
@@ -1177,8 +1184,8 @@ optionally with an <span data-anolis-spec=encoding>encoding</span>
         <p>If <var title>url</var>'s <span title=concept-url-scheme>scheme</span> is not
         "<code title>file</code>", or <var title>c</var> is not an
         <span>ASCII alpha</span>, or <span>remaining</span> does not start with either
-        "<code title>:</code>" or "<code title>|</code>", or <span>remaining</span> does
-        not consist of one code point, or <span>remaining</span>'s second code point is
+        "<code title>:</code>" or "<code title>|</code>", or <span>remaining</span>
+        consists of one code point, or <span>remaining</span>'s second code point is
         not one of "<code title>/</code>", "<code title>\</code>", "<code title>?</code>",
         and "<code title>#</code>", then set
         <var title>url</var>'s <span title=concept-url-host>host</span> to
@@ -1186,8 +1193,8 @@ optionally with an <span data-anolis-spec=encoding>encoding</span>
         <var title>url</var>'s <span title=concept-url-port>port</span> to
         <var title>base</var>'s <span title=concept-url-port>port</span>,
         <var title>url</var>'s <span title=concept-url-path>path</span> to
-        <var title>base</var>'s <span title=concept-url-path>path</span>, and then pop
-        <var title>url</var>'s <span title=concept-url-path>path</span>.
+        <var title>base</var>'s <span title=concept-url-path>path</span>, and then remove
+        <var title>url</var>'s <span title=concept-url-path>path</span>'s last entry.
         <!-- base's path cannot be empty so pop does not need a non-empty check -->
 
         <p class=note>This is a (platform-independent) Windows drive letter quirk.
@@ -1510,9 +1517,9 @@ optionally with an <span data-anolis-spec=encoding>encoding</span>
          <tr><td>"<code title>%2e%2e</code>"
         </table>
 
-       <li><p>If <var title>buffer</var> is "<code title>..</code>", pop
-       <var title>url</var>'s <span title=concept-url-path>path</span>, if non-empty, and
-       then if <span>c</span> is neither  "<code title>/</code>" nor
+       <li><p>If <var title>buffer</var> is "<code title>..</code>", remove
+       <var title>url</var>'s <span title=concept-url-path>path</span>'s last entry, if
+       any, and then if <span>c</span> is neither  "<code title>/</code>" nor
        "<code title>\</code>", append the empty string to <var title>url</var>'s
        <span title=concept-url-path>path</span>.
 
@@ -1983,14 +1990,15 @@ it.
 <!-- XXX https://www.w3.org/Bugs/Public/show_bug.cgi?id=20159 -->
 
 <pre class=idl>[<span title=dom-URL>Constructor</span>(<span data-anolis-spec=encoding>ScalarValueString</span> <var title>url</var>, optional <span data-anolis-spec=encoding>ScalarValueString</span> <var title>base</var> = "about:blank"),
- Exposed=Window,Worker]
+ Exposed=(Window,Worker)]
 interface <dfn>URL</dfn> {
   static <span data-anolis-spec=encoding>ScalarValueString</span> <span title=dom-URL-domainToASCII>domainToASCII</span>(<span data-anolis-spec=encoding>ScalarValueString</span> <var title>domain</var>);
   static <span data-anolis-spec=encoding>ScalarValueString</span> <span title=dom-URL-domainToUnicode>domainToUnicode</span>(<span data-anolis-spec=encoding>ScalarValueString</span> <var title>domain</var>);
 };
 <span>URL</span> implements <span>URLUtils</span>;
 
-[NoInterfaceObject]
+[NoInterfaceObject,
+ Exposed=(Window,Worker)]
 interface <dfn>URLUtils</dfn> {
   stringifier attribute <span data-anolis-spec=encoding>ScalarValueString</span> <span title=dom-URL-href>href</span>;
   readonly attribute <span data-anolis-spec=encoding>ScalarValueString</span> <span title=dom-URL-origin>origin</span>;
@@ -2007,7 +2015,8 @@ interface <dfn>URLUtils</dfn> {
            attribute <span data-anolis-spec=encoding>ScalarValueString</span> <span title=dom-URL-hash>hash</span>;
 };
 
-[NoInterfaceObject]
+[NoInterfaceObject,
+ Exposed=(Window,Worker)]
 interface <dfn>URLUtilsReadOnly</dfn> {
   stringifier readonly attribute <span data-anolis-spec=encoding>ScalarValueString</span> <span title=dom-URL-href>href</span>;
   readonly attribute <span data-anolis-spec=encoding>ScalarValueString</span> <span title=dom-URL-origin>origin</span>;
@@ -2488,8 +2497,7 @@ run these steps:
 these steps:
 
 <ol>
- <li><p>If <span title=concept-UU-url>url</span> is null, or its
- <span>relative flag</span> is unset, terminate these steps.
+ <li><p>If <span title=concept-UU-url>url</span> is null, terminate these steps.
 
  <li><p>If the given value is the empty string, set
  <span title=concept-url-query>query</span> to null, set
@@ -2590,7 +2598,7 @@ steps:
 <h3>Interface <code>URLSearchParams</code></h3>
 
 <pre class=idl>[<span title=dom-URLSearchParams>Constructor</span>(optional (<span data-anolis-spec=encoding>ScalarValueString</span> or <span>URLSearchParams</span>) <var title>init</var> = ""),
- Exposed=Window,Worker]
+ Exposed=(Window,Worker)]
 interface <dfn>URLSearchParams</dfn> {
   void <span title=dom-URLSearchParams-append>append</span>(<span data-anolis-spec=encoding>ScalarValueString</span> <var title>name</var>, <span data-anolis-spec=encoding>ScalarValueString</span> <var title>value</var>);
   void <span title=dom-URLSearchParams-delete>delete</span>(<span data-anolis-spec=encoding>ScalarValueString</span> <var title>name</var>);
@@ -2748,10 +2756,12 @@ proper naming. <span data-anolis-ref>HTML</span>
 
 <p>Thanks to
 Adam Barth,
+Albert Wiersch,
 Alexandre Morgaut,
 Behnam Esfahbod,
 Bobby Holley,
 Boris Zbarsky,
+Brandon Ross,
 Daniel Bratell,
 David Sheets,
 Erik Arvidsson,
