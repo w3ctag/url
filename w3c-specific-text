@@ -1,29 +1,3 @@
-copyright:
-
----
-      <p class="copyright">
-        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> ©
-        2014
-        
-        <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup>
-        (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
-        <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
-        <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), 
-        
-        All Rights Reserved.
-        
-        W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
-        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
-        
-          <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a>
-        
-        rules apply.
-      </p>
----
-
-add to goals section:
-
----
       <p>
         W3C-specific note: This specification documents current RFC 3986 and RFC 3987 handling in
         contemporary Web browser implementations. As a consequence, this specification is not compatible
@@ -33,4 +7,3 @@ add to goals section:
         specification and produce a future version that will attempt to re-align the URL specification
         with an updated version of RFC 3986 while preserving interoperability.
       </p>
----
