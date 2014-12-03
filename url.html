@@ -10,24 +10,6 @@
     list-style: none;
   }
   </style>
-<script>
-document.addEventListener("DOMContentLoaded", function(event) {
-  // no backrefs for index
-  document.querySelector('.indexlist').classList.add('no-backref');
-
-  // as bikeshed relocates script elements, add the script element for dfn.js
-  // after document loads
-  var script = document.createElement('script');
-  script.setAttribute('id', 'head');
-  script.setAttribute('src', 'https://resources.whatwg.org/dfn.js');
-  document.body.appendChild(script);
-});
-</script>
-
-
-
-
-
 </head>
 <body class=h-entry>
 <div class=head>
@@ -2893,6 +2875,10 @@ and
 <p>Per <a href=//creativecommons.org/publicdomain/zero/1.0/ rel=license>CC0</a>, to
 the extent possible under law, the editor has waived all copyright and related or
 neighboring rights to this work.
+
+
+
+
 
 </main>
 <h2 class="no-ref no-num heading settled" id=conformance><span class=content>
