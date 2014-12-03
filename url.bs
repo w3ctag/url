@@ -2851,20 +2851,6 @@ and
 the extent possible under law, the editor has waived all copyright and related or
 neighboring rights to this work.
 
-<script>
-document.addEventListener("DOMContentLoaded", function(event) {
-  // no backrefs for index
-  document.querySelector('.indexlist').classList.add('no-backref');
-
-  // as bikeshed relocates script elements, add the script element for dfn.js
-  // after document loads
-  var script = document.createElement('script');
-  script.setAttribute('id', 'head');
-  script.setAttribute('src', 'https://resources.whatwg.org/dfn.js');
-  document.body.appendChild(script);
-});
-</script>
-
 <pre class="biblio"
 {
     "IDNA": {
