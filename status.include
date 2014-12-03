@@ -20,6 +20,10 @@ Working Group. The WebApps Working Group is part of the
 in the W3C <a href="http://www.w3.org/Interaction/">Interaction
 Domain</a>.</p>
 
+<p>This document is governed by the <a id="w3c_process_revision"
+href="http://www.w3.org/2005/10/Process-20051014/">14 October 2005 W3C Process
+Document</a>.</p>
+
 <p>This document was produced by a group operating under the
 <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004
 W3C Patent Policy</a>.
@@ -36,8 +40,9 @@ must disclose the information in accordance with
 <a
 href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
 6 of the W3C Patent Policy</a>.
+</p>
 
-</p><p>Publication as a Working Draft does not imply endorsement by the W3C
-Membership. This is a draft document and may be updated, replaced or
-obsoleted by other documents at any time. It is inappropriate to cite this
-docu
+<p>Publication as a Working Draft does not imply endorsement by the W3C
+Membership. This is a draft document and may be updated, replaced or obsoleted
+by other documents at any time. It is inappropriate to cite this document as
+other than work in progress.</p>

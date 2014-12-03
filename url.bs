@@ -3,9 +3,10 @@ Title: URL Standard
 Group: webapps
 H1: URL
 Shortname: url
-Status: ED
+Status: WD
 TR: http://www.w3.org/TR/url/
-ED: https://rawgit.com/w3ctag/url/develop/url.html
+ED: https://url.spec.whatwg.org/
+Previous Version: http://www.w3.org/TR/2012/WD-url-20120524/
 Level: 1
 No Editor: true
 Abstract: The URL Standard defines URLs, domains, IP addresses, the <code title>application/x-www-form-urlencoded</code> format, and their API.
