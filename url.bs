@@ -1,10 +1,10 @@
 <pre class="metadata">
-Title: URL Standard
+Title: URL
 Group: webapps
 H1: URL
 Shortname: url
 Status: WD
-TR: http://www.w3.org/TR/url/
+TR: http://www.w3.org/TR/url-1/
 ED: https://url.spec.whatwg.org/
 Previous Version: http://www.w3.org/TR/2012/WD-url-20120524/
 Level: 1
