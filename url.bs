@@ -8,7 +8,8 @@ TR: http://www.w3.org/TR/url-1/
 ED: https://url.spec.whatwg.org/
 Previous Version: http://www.w3.org/TR/2012/WD-url-20120524/
 Level: 1
-No Editor: true
+Editor: Anne van Kesteren, Mozilla, annevk@annevk.nl
+Editor: Sam Ruby, IBM http://www.ibm.com/, rubys@intertwingly.net
 Abstract: The URL Standard defines URLs, domains, IP addresses, the <code title>application/x-www-form-urlencoded</code> format, and their API.
 Logo: https://resources.whatwg.org/logo-url.svg
 !Version History: <a href="https://github.com/w3ctag/url/commits/develop">https://github.com/w3ctag/url/commits/develop</a>

@@ -18,7 +18,7 @@
   <h1 class="p-name no-ref allcaps" id=title>URL</h1>
   <h2 class="no-num no-toc no-ref heading settled" id=subtitle><span class=content>W3C Working Draft,
     <span class=dt-updated><span class=value-title title=20141209>9 December 2014</span></span></span></h2>
-  <div data-fill-with=spec-metadata><dl><dt>This version:<dd><a class=u-url href=http://www.w3.org/TR/2014/WD-url-1-20141209/>http://www.w3.org/TR/2014/WD-url-1-20141209/</a><dt>Latest version:<dd><a href=http://www.w3.org/TR/url-1/>http://www.w3.org/TR/url-1/</a><dt>Editor's Draft:<dd><a href=https://url.spec.whatwg.org/>https://url.spec.whatwg.org/</a><dt>Previous Versions:<dd><a href=http://www.w3.org/TR/2012/WD-url-20120524/ rel=previous>http://www.w3.org/TR/2012/WD-url-20120524/</a><dt>Version History:<dd><span><a href=https://github.com/w3ctag/url/commits/develop>https://github.com/w3ctag/url/commits/develop</a></span><dd><span><a href=https://github.com/whatwg/url/commits>https://github.com/whatwg/url/commits</a> <a href=https://twitter.com/urlstandard>@urlstandard</a></span><dt>Participate:<dd><span><a href="https://www.w3.org/Bugs/Public/enter_bug.cgi?product=WHATWG&amp;component=URL">file a bug</a> (<a href="https://www.w3.org/Bugs/Public/buglist.cgi?product=WHATWG&amp;component=URL&amp;resolution=---">open bugs</a>)</span><dd><span><a href="mailto:public-webapps@w3.org?subject=%5Burl%5D%20">public-webapps@w3.org</a> (<a href=http://lists.w3.org/Archives/Public/public-webapps/>archives</a>)</span><dd><span><a href=https://whatwg.org/mailing-list>whatwg@whatwg.org</a> (<a href=https://whatwg.org/mailing-list#specs>archives</a>)</span><dd><span><a href=http://wiki.whatwg.org/wiki/IRC>IRC: #whatwg on Freenode</a></span></dl></div>
+  <div data-fill-with=spec-metadata><dl><dt>This version:<dd><a class=u-url href=http://www.w3.org/TR/2014/WD-url-1-20141209/>http://www.w3.org/TR/2014/WD-url-1-20141209/</a><dt>Latest version:<dd><a href=http://www.w3.org/TR/url-1/>http://www.w3.org/TR/url-1/</a><dt>Editor's Draft:<dd><a href=https://url.spec.whatwg.org/>https://url.spec.whatwg.org/</a><dt>Previous Versions:<dd><a href=http://www.w3.org/TR/2012/WD-url-20120524/ rel=previous>http://www.w3.org/TR/2012/WD-url-20120524/</a><dt class=editor>Editors:<dd class=editor><div class="p-author h-card vcard"><a class="p-name fn u-email email" href=mailto:annevk@annevk.nl>Anne van Kesteren</a> (<span class="p-org org">Mozilla</span>)</div><dd class=editor><div class="p-author h-card vcard"><a class="p-name fn u-email email" href=mailto:rubys@intertwingly.net>Sam Ruby</a> (<a class="p-org org" href=http://www.ibm.com/>IBM</a>)</div><dt>Version History:<dd><span><a href=https://github.com/w3ctag/url/commits/develop>https://github.com/w3ctag/url/commits/develop</a></span><dd><span><a href=https://github.com/whatwg/url/commits>https://github.com/whatwg/url/commits</a> <a href=https://twitter.com/urlstandard>@urlstandard</a></span><dt>Participate:<dd><span><a href="https://www.w3.org/Bugs/Public/enter_bug.cgi?product=WHATWG&amp;component=URL">file a bug</a> (<a href="https://www.w3.org/Bugs/Public/buglist.cgi?product=WHATWG&amp;component=URL&amp;resolution=---">open bugs</a>)</span><dd><span><a href="mailto:public-webapps@w3.org?subject=%5Burl%5D%20">public-webapps@w3.org</a> (<a href=http://lists.w3.org/Archives/Public/public-webapps/>archives</a>)</span><dd><span><a href=https://whatwg.org/mailing-list>whatwg@whatwg.org</a> (<a href=https://whatwg.org/mailing-list#specs>archives</a>)</span><dd><span><a href=http://wiki.whatwg.org/wiki/IRC>IRC: #whatwg on Freenode</a></span></dl></div>
   <div data-fill-with=warning></div>
   <p class=copyright data-fill-with=copyright><a href=http://www.w3.org/Consortium/Legal/ipr-notice#Copyright>Copyright</a> ©
 2014
@@ -49,7 +49,7 @@ W3C publications and the latest revision of this technical report can be
 found in the <a href=http://www.w3.org/TR/>W3C technical reports index</a>
 at http://www.w3.org/TR/.</em></p>
 
-<p>This is an editor’s draft of the URL
+<p>This is a Working Draft of the URL
 specification.
  Please send comments to
 <a href="mailto:public-webapps@w3.org?subject=%5Burl%5D%20">public-webapps@w3.org</a>
@@ -214,7 +214,7 @@ insecure and is not recommended.
      <var>input</var>,
      <a data-link-type=dfn href=https://encoding.spec.whatwg.org/#utf-8-decode-without-bom title="utf-8 decode without BOM">decoded</a>, and
      then interpreted as hexadecimal number.
-     
+
 
      <li><p>Append a byte whose value is <var>bytePoint</var> to
      <var>output</var>.
@@ -232,24 +232,24 @@ U+0020 (i.e. excluding U+0020) and all code points greater than U+007E.
 
 <p>The <dfn data-dfn-type=dfn data-noexport="" id=default-encode-set>default encode set<a class=self-link href=#default-encode-set></a></dfn> is the
 <a data-link-type=dfn href=#simple-encode-set>simple encode set</a> and code points U+0020,
-'<code>"</code>', 
-"<code>#</code>", 
-"<code>&lt;</code>", 
-"<code>&gt;</code>", 
-"<code>?</code>", 
+'<code>"</code>',
+"<code>#</code>",
+"<code>&lt;</code>",
+"<code>&gt;</code>",
+"<code>?</code>",
 and
-"<code>`</code>". 
+"<code>`</code>".
 
 <p>The <dfn data-dfn-type=dfn data-noexport="" id=password-encode-set>password encode set<a class=self-link href=#password-encode-set></a></dfn> is the
 <a data-link-type=dfn href=#default-encode-set>default encode set</a> and code points
-"<code>/</code>", 
-"<code>@</code>", 
+"<code>/</code>",
+"<code>@</code>",
 and
-"<code>\</code>". 
+"<code>\</code>".
 
 <p>The <dfn data-dfn-type=dfn data-noexport="" id=username-encode-set>username encode set<a class=self-link href=#username-encode-set></a></dfn> is the
 <a data-link-type=dfn href=#password-encode-set>password encode set</a> and code point
-"<code>:</code>". 
+"<code>:</code>".
 
 <p>To <dfn data-dfn-type=dfn data-noexport="" id=utf-8-percent-encode>utf-8 percent encode<a class=self-link href=#utf-8-percent-encode></a></dfn> a <var>code point</var>, using
 an <var>encode set</var>, run these steps:
@@ -386,7 +386,7 @@ these steps:
  <a data-link-type=dfn href=https://encoding.spec.whatwg.org/#utf-8-decode-without-bom>utf-8 decode without BOM</a> on the
  <a data-link-type=dfn href=#percent-decode title="percent decode">percent decoding</a> of
  <a data-link-type=dfn href=https://encoding.spec.whatwg.org/#utf-8-encode>utf-8 encode</a> on <var>input</var>.
- 
+
 
  <li><p>Let <var>asciiDomain</var> be the result of running
  <a data-link-type=dfn href=#concept-domain-to-ascii>domain to ASCII</a> on <var>domain</var>.
@@ -526,7 +526,7 @@ these steps:
    <li><p>Let <var>value</var> be null.
 
    <li><p>If <a data-link-type=dfn href=#c>c</a> is not an <a data-link-type=dfn href=#ascii-digits title="ASCII digits">ASCII digit</a>,
-   <a data-link-type=dfn href=#parse-error>parse error</a>, return failure. 
+   <a data-link-type=dfn href=#parse-error>parse error</a>, return failure.
 
    <li>
     <p>While <a data-link-type=dfn href=#c>c</a> is an
@@ -1065,7 +1065,7 @@ optionally with an <a data-link-type=dfn href=https://encoding.spec.whatwg.org/#
 
      <li><p>Otherwise, if <a data-link-type=dfn href=#c>c</a> is the
      <a data-link-type=dfn href=#eof-code-point>EOF code point</a>, terminate this algorithm.
-     
+
 
      <li><p>Otherwise, <a data-link-type=dfn href=#parse-error>parse error</a>, terminate this algorithm.
     </ol>
@@ -1200,7 +1200,7 @@ optionally with an <a data-link-type=dfn href=https://encoding.spec.whatwg.org/#
         <var>url</var>’s <a data-link-type=dfn href=#concept-url-path title="URL path">path</a> to
         <var>base</var>’s <a data-link-type=dfn href=#concept-url-path title="URL path">path</a>, and then remove
         <var>url</var>’s <a data-link-type=dfn href=#concept-url-path title="URL path">path</a>’s last entry.
-        
+
 
         <p class=note role=note>This is a (platform-independent) Windows drive letter quirk.
         When found at the start of a <code>file</code> URL it is treated as an
@@ -1597,7 +1597,7 @@ optionally with an <a data-link-type=dfn href=https://encoding.spec.whatwg.org/#
        <var>url</var>’s <a data-link-type=dfn href=#concept-url-scheme title="URL scheme">scheme</a> is either
        "<code>ws</code>" or "<code>wss</code>", set
        <var>encoding override</var> to <a data-link-type=dfn href=https://encoding.spec.whatwg.org/#utf-8>utf-8</a>.
-       
+
 
        <li><p>Set <var>buffer</var> to the result of
        <a class=css data-link-type=function href=https://encoding.spec.whatwg.org/#encode title=encode>encoding</a>
@@ -1670,7 +1670,7 @@ optionally with an <a data-link-type=dfn href=https://encoding.spec.whatwg.org/#
        <li><p><a data-link-type=dfn href=#utf-8-percent-encode>utf-8 percent encode</a> <a data-link-type=dfn href=#c>c</a>
        using the <a data-link-type=dfn href=#simple-encode-set>simple encode set</a>, and append the result to
        <var>url</var>’s <a data-link-type=dfn href=#concept-url-fragment title="URL fragment">fragment</a>.
-       
+
       </ol>
     </dl>
   </dl>
@@ -1807,7 +1807,7 @@ on <a data-link-type=dfn href=#concept-url>URL</a>’s <a data-link-type=dfn hre
 
   <p>If <var>url</var> is failure, return a new globally unique identifier.
   Otherwise, return <var>url</var>’s <a data-link-type=dfn href=#concept-url-origin title="URL origin">origin</a>.
-  
+
 
   <p class="example no-backref">The <a data-link-type=dfn href=#concept-url-origin title="URL origin">origin</a> of
   <code>blob:https://whatwg.org/d0360e2f-caee-469f-9a2f-87d5b0456f6f</code> is
@@ -1876,7 +1876,7 @@ optionally with a <i title="">use _charset_ flag</i>, and optionally with an
 
  <li><p>Let <var>sequences</var> be the result of splitting
  <var>input</var> on `<code>&amp;</code>`.
- 
+
 
  <li><p>If the <i title="">isindex flag</i> is set and the first byte sequence in
  <var>sequences</var> does not contain a `<code>=</code>`, prepend
@@ -2140,7 +2140,7 @@ and optionally a <var>url</var>, run these steps:
      <a data-link-type=dfn href=#concept-URLUtils-get-the-base title="URLUtils get the base">get the base</a> and
      <a data-link-type=dfn href=#concept-URLUtils-query-encoding title="URLUtils query encoding">query encoding</a> as
      <var>encoding override</var>.
-     
+
 
      <li><p>If <var>url</var> is not failure, set
      <a data-link-type=dfn href=#concept-URLUtils-url title="URLUtils URL">url</a> to <var>url</var>.
@@ -2171,14 +2171,14 @@ and optionally a <var>url</var>, run these steps:
  <li><p>If <var>value</var> is not given, let <var>value</var> be the result
  of <a data-link-type=dfn href=#concept-url-serializer title="URL serializer">serializing</a> the associated
  <a data-link-type=dfn href=#concept-URLUtils-url title="URLUtils URL">url</a>.
- 
+
 
  <li><p>Run the <a data-link-type=dfn href=#concept-URLUtils-update title="URLUtils update">update steps</a> with
  <var>value</var>.
 </ol>
 
 
-<h3 class="heading settled" data-level=6.1 id=constructors><span class=secno>6.1. </span><span class=content>Constructors</span><a class=self-link href=#constructors></a></h3> 
+<h3 class="heading settled" data-level=6.1 id=constructors><span class=secno>6.1. </span><span class=content>Constructors</span><a class=self-link href=#constructors></a></h3>
 
 <p>The
 <dfn class=idl-code data-dfn-for=URL data-dfn-type=constructor data-export="" id=dom-url-url title=URL()><code>URL(<var>url</var>, <var>base</var>)</code><a class=self-link href=#dom-url-url></a></dfn>
@@ -2686,7 +2686,7 @@ using <var>init</var>, run these steps:
 
  <li><p>If <var>init</var> is the empty string or null, return
  <var>query</var>.
- 
+
 
  <li><p>If <var>init</var> is a string,
  set <var>query</var>’s <a data-link-type=dfn href=#concept-URLSearchParams-list title="URLSearchParams list">list</a> to the
