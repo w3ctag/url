@@ -46,7 +46,7 @@ Logo: https://resources.whatwg.org/logo-url.svg
  for JavaScript worker environments.)
 </ul>
 
-<p class=note>As the editor learns more about the subject matter the goals
+<p class=note>As the editors learn more about the subject matter the goals
 might increase in scope somewhat.
 
 
@@ -849,7 +849,8 @@ U+100000 to U+10FFFD.
 
 <p class=note>Code points higher than U+009F will be converted to
 <a title="percent-encoded byte">percent-encoded bytes</a> by the
-<a>URL parser</a>.
+<a>URL parser</a>, except for code points appearing in
+<a title="URL fragment">fragments</a>.
 
 <p>The <dfn>URL units</dfn> are <a>URL code points</a> and
 <a title="percent-encoded byte">percent-encoded bytes</a>.
@@ -1598,6 +1599,7 @@ optionally with an <a>encoding</a>
      <dt><a>EOF code point</a>
      <dd><p>Do nothing.
 
+     <dt>U+0000
      <dt>U+0009
      <dt>U+000A
      <dt>U+000D
@@ -1606,19 +1608,19 @@ optionally with an <a>encoding</a>
      <dt>Otherwise
      <dd>
       <ol>
-       <li><p>If <a>c</a> is not a
-       <a title="URL code points">URL code point</a> and not
+       <li><p>If <a>c</a> is not a <a title="URL code points">URL code point</a> and not
        "<code>%</code>", <a>parse error</a>.
 
        <li><p>If <a>c</a> is "<code>%</code>" and <a>remaining</a> does
        not start with two <a>ASCII hex digits</a>, <a>parse error</a>.
 
-       <li><p><a>utf-8 percent encode</a> <a>c</a>
-       using the <a>simple encode set</a>, and append the result to
-       <var>url</var>'s <a title='URL fragment'>fragment</a>.
-       <!-- if people complain about percent encoding do not forget that
-            results may differ depending on whether or not a relative scheme
-            is in play -->
+       <li>
+        <p>Append <a>c</a> to <var>url</var>'s <a title="URL fragment">fragment</a>.
+
+        <p class=note>Unfortunately not using <a title="percent encode">percent-encoding</a> is intentional as
+        implementations with majority market share exhibit this behavior.
+        <!-- Chrome does percent-encoding if the scheme is not a relative scheme,
+             hopefully that can be aligned since flip-flopping is not great. -->
       </ol>
     </dl>
   </dl>
@@ -2049,23 +2051,23 @@ URLPath would be a subclassed Array? -->
 
 <p>Specifications defining objects implementing <code><a interface>URLUtils</a></code> or
 <code><a interface>URLUtilsReadOnly</a></code> must define a
-<dfn id=concept-URLUtils-get-the-base title='URLUtils get the base'>get the base</dfn> algorithm, which must return the
+<dfn id=concept-urlutils-get-the-base title='URLUtils get the base'>get the base</dfn> algorithm, which must return the
 appropriate <a>base URL</a> for the object.
 
 <p>Specifications defining objects implementing <code><a interface>URLUtils</a></code> may
-define <dfn id=concept-URLUtils-update title='URLUtils update'>update steps</dfn> to make it possible for an
+define <dfn id=concept-urlutils-update title='URLUtils update'>update steps</dfn> to make it possible for an
 underlying string (such as an
 <a title=concept-attribute-value>attribute value</a>)
 to be updated. The <a title='URLUtils update'>update steps</a> are passed a string
 <var>value</var> for this purpose.
 
 <p>An object implementing <code><a interface>URLUtils</a></code> or <code><a interface>URLUtilsReadOnly</a></code> has an
-associated <dfn id=concept-URLUtils-input title='URLUtils input'>input</dfn> (a string),
-<dfn id=concept-URLUtils-query-encoding title='URLUtils query encoding'>query encoding</dfn>
+associated <dfn id=concept-urlutils-input title='URLUtils input'>input</dfn> (a string),
+<dfn id=concept-urlutils-query-encoding title='URLUtils query encoding'>query encoding</dfn>
 (an <a>encoding</a>),
-<dfn id=concept-URLUtils-query-object title='URLUtils query object'>query object</dfn>
+<dfn id=concept-urlutils-query-object title='URLUtils query object'>query object</dfn>
 (a <code><a interface>URLSearchParams</a></code> object or null), and a
-<dfn id=concept-URLUtils-url title='URLUtils URL'>url</dfn> (a <a>URL</a> or null).
+<dfn id=concept-urlutils-url title='URLUtils URL'>url</dfn> (a <a>URL</a> or null).
 
 Unless stated otherwise, <a title='URLUtils query encoding'>query encoding</a> is
 <a>utf-8</a> and
@@ -2082,7 +2084,7 @@ concept only relevant for HTML.
 <a title='URLUtils set the input'>set the input</a> algorithms to set
 <a title='URLUtils input'>input</a>, <a title='URLUtils URL'>url</a>, and
 <a title='URLUtils query object'>query object</a>. To
-<dfn id=concept-URLUtils-set-the-input title='URLUtils set the input'>set the input</dfn> given <var>input</var>
+<dfn id=concept-urlutils-set-the-input title='URLUtils set the input'>set the input</dfn> given <var>input</var>
 and optionally a <var>url</var>, run these steps:
 
 <ol>
@@ -2248,7 +2250,7 @@ representation?
 not exposed on the global object. They are meant to augment other interfaces, such as
 <code><a interface>URL</a></code>.
 
-<p>The <dfn stringifier dfn-for=URLUtils><code>href</code></dfn> attribute's getter must run
+<p>The <dfn attribute dfn-for=URLUtils><code>href</code></dfn> attribute's getter must run
 these steps:
 
 <ol>
@@ -2259,7 +2261,7 @@ these steps:
  of <a title='URLUtils URL'>url</a>.
 </ol>
 
-<p>The <code><a stringifier for=URLUtils>href</a></code> attribute's setter must run these steps:
+<p>The <code><a attribute for=URLUtils>href</a></code> attribute's setter must run these steps:
 
 <ol>
  <li><p>Let <var>input</var> be the given value.
@@ -2296,7 +2298,7 @@ these steps:
   </ol>
 
   <div class=example>
-   <p>This means that if the <code><a stringifier for=URLUtils>href</a></code> attribute is set to
+   <p>This means that if the <code><a attribute for=URLUtils>href</a></code> attribute is set to
    value that would cause the <a>URL parser</a> to return
    failure, that value is still passed through unchanged. This is one of those unfortunate
    legacy incidents.
@@ -2638,11 +2640,11 @@ interface URLSearchParams {
 };</pre>
 
 <p>A <code><a interface>URLSearchParams</a></code> object has an associated
-<dfn id=concept-URLSearchParams-list title='URLSearchParams list'>list</dfn> of name-value pairs, which is initially
+<dfn id=concept-urlsearchparams-list title='URLSearchParams list'>list</dfn> of name-value pairs, which is initially
 empty.
 
 <p>A <code><a interface>URLSearchParams</a></code> object has an associated list of zero or more
-<dfn id=concept-URLSearchParams-url-object title='URLSearchParams URL object'>url objects</dfn>, which is initially empty.
+<dfn id=concept-urlsearchparams-url-object title='URLSearchParams URL object'>url objects</dfn>, which is initially empty.
 
 <p class=note><code><a interface>URLSearchParams</a></code> objects always use
 <a>utf-8</a> as
@@ -2654,7 +2656,7 @@ encourage developers to migrate towards
 have done a long time ago now.
 
 <p>To create a
-<dfn id=concept-URLSearchParams-new title='URLSearchParams new'>new <code><a interface>URLSearchParams</a></code> object</dfn>, optionally
+<dfn id=concept-urlsearchparams-new title='URLSearchParams new'>new <code><a interface>URLSearchParams</a></code> object</dfn>, optionally
 using <var>init</var>, run these steps:
 
 <ol>
@@ -2677,7 +2679,7 @@ using <var>init</var>, run these steps:
 </ol>
 
 <p>A <code><a interface>URLSearchParams</a></code> object's
-<dfn id=concept-URLSearchParams-update title='URLSearchParams update'>update steps</dfn> are to run these steps for
+<dfn id=concept-urlsearchparams-update title='URLSearchParams update'>update steps</dfn> are to run these steps for
 each associated  <a title='URLSearchParams URL object'>url object</a>
 <var>urlObject</var>, in order:
 
@@ -2756,7 +2758,7 @@ otherwise.
 <a title='URLSearchParams list'>list</a> name-value pairs with the key being
 the name and the value the value.
 
-<p>The <dfn stringifier dfn-for=URLSearchParams>stringifier</dfn> must return the
+<p>The <dfn dfn dfn-for=URLSearchParams>stringification behavior</dfn> must return the
 <a title='urlencoded serializer'>serialization</a> of the
 <code><a interface>URLSearchParams</a></code> object's
 <a title='URLSearchParams list'>list</a>.
@@ -2765,12 +2767,10 @@ the name and the value the value.
 <h3 id=url-apis-elsewhere>URL APIs elsewhere</h3>
 
 <p>A standard that exposes <a title='URL'>URLs</a>, should expose the
-<a>URL</a> as a string (by
-<a title='URL serializer'>serializing</a> an internal
-<a>URL</a>). A standard should not expose a
-<code><a>URL</a> using a <a interface>URL</a></code> object. <code><a interface>URL</a></code>
-objects are meant for <a>URL</a> manipulation. In IDL the
-USVString type should be used.
+<a>URL</a> as a string (by <a title='URL serializer'>serializing</a> an internal
+<a>URL</a>). A standard should not expose a <a>URL</a> using a
+<code><a interface>URL</a></code> object. <code><a interface>URL</a></code> objects are
+meant for <a>URL</a> manipulation. In IDL the USVString type should be used.
 
 <p class=note>The higher-level notion here is that values are to be exposed as immutable
 data structures.
